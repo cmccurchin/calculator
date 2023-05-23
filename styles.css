@@ -1,14 +1,22 @@
 button {
     width: 40px;
-
 }
 
 #calculator {
-    width: 200px;
     display: flex; 
     flex-direction: column;
+    width: 200px;
+}
+
+#display {
+    display: flex;
+    flex: 1 1 0;
+    min-width: 0;
+    margin-right: 10px;
 }
 
 .row {
     display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
 }
