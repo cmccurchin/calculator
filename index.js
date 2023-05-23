@@ -1,6 +1,6 @@
-let currentTotal;
-let currentInput;
-let lastOperator;
+let currentTotal = '';
+let currentInput = '';
+let lastOperator = '';
 
 var allButtons = document.getElementsByTagName('button')
 var display = document.getElementById('display')
@@ -8,6 +8,8 @@ var display = document.getElementById('display')
 for(let i = 0; i < allButtons.length; i++) {
     allButtons[i].addEventListener("click", function(event) {
         const b = event.target;
+
+        // to do: handle state after equals "="
         if (b.classList.contains("number")){
             console.log("is number")
             if (currentInput){
@@ -16,21 +18,15 @@ for(let i = 0; i < allButtons.length; i++) {
                 currentInput = b.value
             }
 
-            if (lastOperator) {
-                display.value = currentTotal + lastOperator + currentInput
-            } else {
-                display.value = currentInput
-            }
-
         } else if (b.classList.contains("operator")) {
             if (!lastOperator) {
                 currentTotal = currentInput;
-                currentInput = null;
+                currentInput = '';
                 lastOperator = b.value;
-                display.value = currentTotal + b.value
 
             } else if (lastOperator && currentInput){
                 switch(lastOperator) {
+                    //add case for when operator was clear
                     case "*":
                       currentTotal = Number(currentTotal) * Number(currentInput)
                       break;
@@ -47,9 +43,12 @@ for(let i = 0; i < allButtons.length; i++) {
                         //throw error
                       // code block
                 }
-                currentInput = null;
-                lastOperator = b.value;
-
+                currentInput = '';
+                if (b.value === "=") { 
+                    lastOperator = '';
+                } else {
+                    lastOperator = b.value;
+                }
             } else if (lastOperator && !currentInput) {
                 lastOperator = b.value;
             }
@@ -58,9 +57,9 @@ for(let i = 0; i < allButtons.length; i++) {
             }
         } else {
             //throw error
-            
-
         }
+
+        display.value = currentTotal + lastOperator + currentInput;
         
         console.log({value: event.target.value, currentInput,lastOperator, currentTotal});
     })
