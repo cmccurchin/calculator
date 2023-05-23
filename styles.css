@@ -1,0 +1,11 @@
+p {
+    color: blue;
+}
+
+#main-header {
+    font-size: 100px;
+}
+
+.main-point {
+    font-style: italic;
+}
