@@ -1,11 +1,14 @@
-p {
-    color: blue;
+button {
+    width: 40px;
+
 }
 
-#main-header {
-    font-size: 100px;
+#calculator {
+    width: 200px;
+    display: flex; 
+    flex-direction: column;
 }
 
-.main-point {
-    font-style: italic;
+.row {
+    display: flex;
 }
