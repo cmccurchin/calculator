@@ -12,17 +12,24 @@ for(let i = 0; i < allButtons.length; i++) {
         // to do: handle state after equals "="
         if (b.classList.contains("number")){
             console.log("is number")
+            if (currentTotal && !lastOperator){
+                currentTotal = '';
+                
+            }
             if (currentInput){
                 currentInput = currentInput + b.value
             } else {
                 currentInput = b.value
             }
-
+            //logic for when we type an operator
         } else if (b.classList.contains("operator")) {
-            if (!lastOperator) {
+            if (currentTotal && !lastOperator){
+                lastOperator = b.value
+            } else if (!lastOperator) {
                 currentTotal = currentInput;
                 currentInput = '';
                 lastOperator = b.value;
+        
 
             } else if (lastOperator && currentInput){
                 switch(lastOperator) {
