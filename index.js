@@ -23,7 +23,12 @@ for(let i = 0; i < allButtons.length; i++) {
             }
             //logic for when we type an operator
         } else if (b.classList.contains("operator")) {
-            if (currentTotal && !lastOperator){
+            if (b.value === "clear"){
+            currentTotal = '';
+            lastOperator = '';
+            currentInput = '';
+
+            } else if (currentTotal && !lastOperator){
                 lastOperator = b.value
             } else if (!lastOperator) {
                 currentTotal = currentInput;
