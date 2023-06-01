@@ -7,6 +7,8 @@ var display = document.getElementById('display')
 
 for(let i = 0; i < allButtons.length; i++) {
     allButtons[i].addEventListener("click", function(event) {
+        throw new Error("This error is you pressed a button!")
+
         //const b is the button we clicked
         const b = event.target;
 
