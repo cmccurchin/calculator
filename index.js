@@ -7,8 +7,6 @@ var display = document.getElementById('display')
 
 for(let i = 0; i < allButtons.length; i++) {
     allButtons[i].addEventListener("click", function(event) {
-        throw new Error("This error is you pressed a button!")
-
         //const b is the button we clicked
         const b = event.target;
 
@@ -54,7 +52,7 @@ for(let i = 0; i < allButtons.length; i++) {
                         currentTotal = Number(currentTotal) - Number(currentInput)
                         break;
                     default:
-                        //throw error
+                        throw new Error("Last operator not valid")
                 }
                 currentInput = '';
                 if (b.value === "=") { 
@@ -65,10 +63,10 @@ for(let i = 0; i < allButtons.length; i++) {
             } else if (lastOperator && !currentInput) {
                 lastOperator = b.value;
             } else {
-                //throw error
+                throw new Error("Cannot perform operation")
             }
         } else {
-            //throw error
+            throw new Error("Clicked button was not number or operator");
         }
 
         display.value = currentTotal + lastOperator + currentInput;
